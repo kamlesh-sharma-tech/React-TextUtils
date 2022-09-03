@@ -59,7 +59,7 @@ export default function TextForm(props) {
     <div className="container" style={{color : props.mode==='dark' ? 'white' : 'black'}}>
     <h2>{props.heading}</h2>
       <div className="mb-3">
-        <textarea className="form-control" value={text} placeholder="Enter your text here" style={{backgroundColor : props.mode==='dark' ? 'gray' : 'white',color: props.mode==='dark' ? 'white' : 'black'}} onChange={handleOnChange} id="myBox" rows="3"></textarea>
+        <textarea className="text-box form-control" value={text} placeholder="Enter your text here" style={{backgroundColor : props.mode==='dark' ? 'gray' : 'white',color: props.mode==='dark' ? 'white' : 'black'}} onChange={handleOnChange} id="myBox" rows="5"></textarea>
     </div>
     <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Uppercase</button>
     <button className="btn btn-primary mx-2 my-2" onClick={handleLowClick}>Lowercase</button>
@@ -70,7 +70,7 @@ export default function TextForm(props) {
     </div>
     <div className="container my-3" style={{color : props.mode==='dark' ? 'white' : 'black'}}>
       <h3>Your text summary</h3>
-      <div className="countBox">
+      <div className="countBox" style={{backgroundColor : props.mode==='dark' ? 'white' : 'rgb(51, 50, 50)',color: props.mode==='light' ? 'white' : 'black'}}>
       <p>Character Count : {text.length}</p>
       <p>Word Count : {text.split(" ").filter((element)=>{return element.length!=0}).length}</p>
       {/* <p>{text.split(" ").length} words, {text.length} characters.</p> */}
