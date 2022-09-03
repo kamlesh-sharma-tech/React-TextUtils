@@ -17,8 +17,17 @@ export default function TextForm(props) {
 
     const handleCapitalize = ()=> {
       // console.log("up clicked");
-      let newText = text.charAt(0).toUpperCase() + text.slice(1);
-      setText(newText);
+      const string = text.split(" ");
+      const cased = [];
+
+      // Convert every first letter to uppercase
+      string.map((word) => {
+        cased.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
+      });
+
+      // Convert my words array to a string with .join()
+      setText(cased.join(" "));
+      
     }
 
     const handleOnChange = (event)=> {

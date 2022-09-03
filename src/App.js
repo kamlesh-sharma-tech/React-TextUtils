@@ -17,7 +17,7 @@ function App() {
     if(mode === 'light'){
       setMode('dark');
       setModeBtnText('Light Mode');
-      document.body.style.backgroundColor = '#395B64';
+      document.body.style.backgroundColor = 'rgb(40,44,52)';
     }else{
       setMode('light');
       setModeBtnText('Dark Mode');
