@@ -1,7 +1,16 @@
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import React, {useState} from 'react'
 import '../App.css';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function TextForm(props) {
+    // const [btnEnable,setBtnEnable] = useState('disabled');
 
     const handleUpClick = ()=> {
       // console.log("up clicked");
@@ -45,6 +54,7 @@ export default function TextForm(props) {
       var text = document.getElementById("myBox");
       text.select();
       navigator.clipboard.writeText(text.value);
+      setOpen(true);
     }
 
     const handleExtraSpaces = ()=> {
@@ -53,6 +63,18 @@ export default function TextForm(props) {
     }
 
     const [text,setText] = useState("");
+
+    const [open, setOpen] = useState(false);
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+  
+
   
   return (
     <>
@@ -61,12 +83,21 @@ export default function TextForm(props) {
       <div className="mb-3">
         <textarea className="text-box form-control" value={text} placeholder="Enter your text here" style={{backgroundColor : props.mode==='dark' ? 'gray' : 'white',color: props.mode==='dark' ? 'white' : 'black'}} onChange={handleOnChange} id="myBox" rows="5"></textarea>
     </div>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Uppercase</button>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleLowClick}>Lowercase</button>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleCapitalize}>Capitalize</button>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy</button>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleClearAll}>Clear All</button>
+
+    <Stack spacing={2} direction="row">
+    <Button variant="contained" disabled={!text.length>0} onClick={handleUpClick}>Uppercase</Button>
+    <Button variant="contained" disabled={!text.length>0} onClick={handleLowClick}>Lowercase</Button>
+    <Button variant="contained" disabled={!text.length>0} onClick={handleCapitalize}>Capitalize</Button>
+    <Button variant="contained" disabled={!text.length>0} onClick={handleCopy}>Copy</Button>
+    <Button variant="contained" disabled={!text.length>0} onClick={handleExtraSpaces}>Remove Extra Spaces</Button>
+    <Button variant="contained" disabled={!text.length>0} onClick={handleClearAll}>Clear All</Button>
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Text Copied!
+        </Alert>
+      </Snackbar>
+    </Stack>
+      
     </div>
     <div className="container my-3" style={{color : props.mode==='dark' ? 'white' : 'black'}}>
       <h3>Your text summary</h3>
