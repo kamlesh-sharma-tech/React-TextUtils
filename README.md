@@ -1,3 +1,5 @@
+## Text Utils React App
+
 ![Screenshot1](https://user-images.githubusercontent.com/66367321/188270312-b2f281f7-7a33-4039-9c7d-e3d13c10699e.png)
 
 ![Screenshot2](https://user-images.githubusercontent.com/66367321/188270328-aa6aa6c4-8455-4a85-911e-80f086f8c285.png)
